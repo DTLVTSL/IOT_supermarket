@@ -1,0 +1,31 @@
+<table class="table" >
+  <caption class="lead">Products</caption>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>QTY</th>
+      <th>Price</th>
+	  
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="product in products">
+      <td>{{product.prod}}</td>
+      <td>{{product.qty}}</td>
+      <td>{{product.total_price}}</td>
+ 	  <td>{{prices.totall_price}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<form class="form-horizontal" role="form">
+  
+
+  <div class="form-group">
+
+    <div class="col-sm-offset-2 col-sm-10">
+      <a ng-click="addProduct()" class="btn btn-small btn-primary">FINISH and ACCEPT</a>
+    </div>
+  </div>
+</form>
+</div>

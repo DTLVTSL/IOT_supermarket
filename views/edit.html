@@ -1,0 +1,20 @@
+<h1>ADD quantity </h1>
+
+<form name="edit_form" class="form-horizontal" role="form">
+ 
+
+  <div class="form-group">
+    <label for="Quantity" class="col-sm-2 control-label">Quantity:</label>
+    <div class="col-sm-4">
+      <input class="form-control" id="Quantity" type="number" min=”0? step="any"
+             ng-model="product.qty" placeholder="9.99"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+
+    <div class="col-sm-offset-2 col-sm-10">
+      <input type="submit" id="submit" class="btn btn-small btn-primary" ng-click="editProduct()" class="btn btn-small btn-primary"></button> <a href="#/products" class="btn btn-small btn-danger">Cancel</a>
+    </div>
+  </div>
+</form>
