@@ -7,8 +7,8 @@ import time
 import sys
 import imp
 global data
-ipBroker = "192.168.1.143"
-portBroker = 1883
+sys.path.append('../Configuration/')
+from broker_configuration import broker_configuration
 class chart_weight:
 
     def __init__(self, sid,name,s_type):
@@ -38,7 +38,6 @@ class chart_weight:
 
 topic = "$SMARKT/sensor"
 weightSensor = chart_weight(1,"sensor","sensor/")
-weightSensor.connection(ipBroker, portBroker)
+weightSensor.connection(broker_configuration['IP'], broker_configuration['port'])
 weightSensor.weight(topic)
-
 

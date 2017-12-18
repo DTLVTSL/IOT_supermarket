@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from array import *
+import sys
 import paho.mqtt.client as mqtt
 import json
 import datetime
@@ -12,8 +13,8 @@ from weight import chart_weight
 from firebase import firebase
 firebase = firebase.FirebaseApplication('https://smarkt-bac7b.firebaseio.com', None)
 d=[]
-ipBroker = "192.168.1.143"
-portBroker = 1883
+sys.path.append('../Configuration/')
+from broker_configuration import broker_configuration
 #Trolley number 1
 
 def on_connect(client, userdata, flags, rc):
@@ -89,7 +90,7 @@ def on_log(self, attuatorControl, obj, level, string):
 	print(string)
 
 def run(self,ip,port):
-	self.client.connect(ipBroker,portBroker,60)
+	self.client.connect(ip,port, 60)
 	print "entrou no run"
 	self.client.subscribe("$SMARKT/sensor", qos=2)
 	rc=0
@@ -102,5 +103,5 @@ def run(self,ip,port):
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect(ipBroker,portBroker,60)
+client.connect(broker_configuration['IP'], broker_configuration['port'], 60)
 client.loop_forever()

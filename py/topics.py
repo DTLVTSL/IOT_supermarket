@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import paho.mqtt.client as mqtt
+import sys
 
-ipBroker = "192.168.1.143"
-portBroker = 1883
+sys.path.append('../Configuration/')
+from broker_configuration import broker_configuration
+
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
@@ -16,6 +18,6 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect(ipBroker,portBroker,60)
+client.connect(broker_configuration['IP'], broker_configuration['port'], 60)
 
 client.loop_forever()

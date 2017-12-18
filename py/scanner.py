@@ -7,6 +7,8 @@ import time
 import sys
 import cv2.cv as cv #Use OpenCV-2.4.3
 import zbar
+sys.path.append('../Configuration/')
+from broker_configuration import broker_configuration
 
 class chart_scanner:
 
@@ -62,7 +64,7 @@ if __name__ == "__main__":
 	set_zbar = zbar.ImageScanner()
 	topic = "$SMARKT/sensor"
 	scannerSensor = chart_scanner(1,"sensor","scannerSensor/")
-	scannerSensor.connection('192.168.1.143', 1883)
+	scannerSensor.connection(broker_configuration['IP'], broker_configuration['port'])
 	frame = cv.QueryFrame(capture)
 	scannerSensor.scanner_procces(frame,set_zbar)
 	scannerSensor.scan(topic)
